@@ -4,6 +4,7 @@ import (
 	"encoding/csv"
 	"flag"
 	"fmt"
+	"log"
 	"math/rand"
 	"os"
 	"strings"
@@ -60,7 +61,10 @@ func main() {
 
 func getAnswer(answer string, answerChannel chan string) {
 
-	fmt.Scanf("%s", &answer)
+	_, err := fmt.Scanf("%s", &answer)
+	if err != nil {
+		log.Fatal(err)
+	}
 	answerChannel <- answer
 
 }
